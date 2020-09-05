@@ -15,6 +15,7 @@ const axios = require('axios');
 const { google } = require('googleapis');
 const Quickbooks = require('node-quickbooks');
 const validator = require('validator');
+const oxford = require('oxford-dictionaries-api');
 
 Quickbooks.setOauthVersion('2.0');
 
@@ -165,6 +166,17 @@ exports.getNewYorkTimes = (req, res, next) => {
       const message = JSON.stringify(err.response.data.fault);
       next(new Error(`New York Times API - ${err.response.status} ${err.response.statusText} ${message}`));
     });
+};
+
+exports.getDict = async (req, res, next) => {
+  // need app_id and app_key
+  const app_id = 'your_appid'
+  const app_key = 'your_appkey';
+  
+  let oxford= require('oxford-dictionaries-api');
+  let oxforddictionaries = new oxford(app_id, app_key);
+  res.render('home');
+  console.log("Success");
 };
 
 /**
