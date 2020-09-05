@@ -1,14 +1,14 @@
 FROM node:12-slim
 
-WORKDIR /starter
+WORKDIR /VocabTester
 ENV NODE_ENV development
 
-COPY package.json /starter/package.json
+COPY package.json /VocabTester/package.json
 
 RUN npm install --production
 
-COPY .env.example /starter/.env.example
-COPY . /starter
+COPY .env.example /VocabTester/.env.example
+COPY . /VocabTester
 
 CMD ["npm","start"]
 
